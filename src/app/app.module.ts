@@ -9,14 +9,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './modules/material-components/material-components.module';
 import { VatPipe } from './pipes/vat.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { ShopComponent } from './components/shop/shop.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, ProductComponent, FocusDirective, VatPipe, SearchPipe],
+  declarations: [
+    AppComponent,
+    ProductComponent,
+    FocusDirective,
+    VatPipe,
+    SearchPipe,
+    ShopComponent,
+    ProductDetailsComponent,
+    ProductCreateComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

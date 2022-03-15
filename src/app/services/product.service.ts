@@ -9,6 +9,12 @@ export class ProductService {
     return this._productDatas;
   }
 
+  getProductById(id: string): ProductData | undefined {
+    return this.productDatas.find((product) => {
+      return product.id === id;
+    });
+  }
+
   private _productDatas: ProductData[] = [
     {
       id: '0',

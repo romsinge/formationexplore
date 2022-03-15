@@ -1,0 +1,24 @@
+<div>
+  <input placeholder="Search..." type="text" [(ngModel)]="searchString" />
+</div>
+
+<explore-product
+  *ngFor="
+    let product of productDatas | search: searchString;
+    let i = index;
+    let odd = odd
+  "
+  [productData]="product"
+  (addToCart)="handleAddToCart($event)"
+  [ngStyle]="{
+    backgroundColor: i % 2 ? '' : 'silver'
+  }"
+  [style.border]="odd ? 'solid 1px black' : ''"
+  [exploreFocus]="product.price | vat"
+  exploreFocus.color="gold"
+  [routerLink]="['/product-details', product.id]"
+></explore-product>
+
+<pre>
+  {{ productDatas | json }}
+</pre>
