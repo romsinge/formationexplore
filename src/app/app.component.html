@@ -1,14 +1,17 @@
 <h1>Bienvenue chez Explore</h1>
 
+<div>
+  <input placeholder="Search..." type="text" [(ngModel)]="searchString" />
+</div>
+
 <explore-product
+  *ngFor="let product of productDatas; let i = index; let odd = odd"
+  [productData]="product"
   (addToCart)="handleAddToCart($event)"
-  [productData]="productDatas[0]"
-></explore-product>
-<explore-product
-  (addToCart)="handleAddToCart($event)"
-  [productData]="productDatas[1]"
-></explore-product>
-<explore-product
-  (addToCart)="handleAddToCart($event)"
-  [productData]="productDatas[2]"
+  [ngStyle]="{
+    backgroundColor: i % 2 ? '' : 'silver'
+  }"
+  [style.border]="odd ? 'solid 1px black' : ''"
+  [exploreFocus]="product.price"
+  exploreFocus.color="gold"
 ></explore-product>
