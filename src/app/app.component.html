@@ -1,17 +1,27 @@
-<h1>Bienvenue chez Explore</h1>
+<mat-toolbar color="primary">
+  <h1>Bienvenue chez {{ "Explore" | uppercase }}</h1>
+</mat-toolbar>
 
 <div>
   <input placeholder="Search..." type="text" [(ngModel)]="searchString" />
 </div>
 
 <explore-product
-  *ngFor="let product of productDatas; let i = index; let odd = odd"
+  *ngFor="
+    let product of productDatas | search: searchString;
+    let i = index;
+    let odd = odd
+  "
   [productData]="product"
   (addToCart)="handleAddToCart($event)"
   [ngStyle]="{
     backgroundColor: i % 2 ? '' : 'silver'
   }"
   [style.border]="odd ? 'solid 1px black' : ''"
-  [exploreFocus]="product.price"
+  [exploreFocus]="product.price | vat"
   exploreFocus.color="gold"
 ></explore-product>
+
+<pre>
+  {{ productDatas | json }}
+</pre>

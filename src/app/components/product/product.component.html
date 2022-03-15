@@ -1,7 +1,9 @@
-<strong (click)="handleClick()">{{ productData?.name }}</strong>
-<img [src]="productData?.image" />
-<strong>{{ productData?.price }} EUR</strong>
-<p>
-  {{ productData?.description }}
-  <img src="" alt="" />
-</p>
+<mat-card>
+  <strong (click)="handleClick()">{{ productData?.name }}</strong>
+  <img [src]="productData?.image" />
+  <strong>{{ productData?.price | vat | currency: "EUR" }}</strong>
+  <p>
+    {{ productData?.description }}
+    <img src="" alt="" />
+  </p>
+</mat-card>
