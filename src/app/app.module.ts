@@ -14,6 +14,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +33,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     MaterialComponentsModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

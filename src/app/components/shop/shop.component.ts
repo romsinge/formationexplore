@@ -14,7 +14,11 @@ export class ShopComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productDatas = this.productService.productDatas;
+    this.productService.productDatas.subscribe({
+      next: (productDatas) => {
+        this.productDatas = productDatas;
+      },
+    });
   }
 
   handleAddToCart(productData: ProductData): void {
