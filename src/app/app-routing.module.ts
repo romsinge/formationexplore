@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const ROUTES: Routes = [
   {
@@ -21,6 +22,8 @@ const ROUTES: Routes = [
   {
     path: 'product-create',
     component: ProductCreateComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard],
   },
   {
     path: '**',
