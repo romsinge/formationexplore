@@ -1,0 +1,19 @@
+:host {
+  form {
+    max-width: 200px;
+    margin: auto;
+
+    &.ng-valid {
+      border: solid 1px green;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+
+      input.ng-invalid.ng-touched {
+        border: solid 2px red;
+      }
+    }
+  }
+}

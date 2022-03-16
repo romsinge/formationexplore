@@ -15,6 +15,7 @@ import { ProductCreateComponent } from './components/product-create/product-crea
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     ShopComponent,
     ProductDetailsComponent,
     ProductCreateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<form #userForm="ngForm" (ngSubmit)="handleSubmit()">
+  <label>
+    Username
+    <input
+      type="text"
+      [ngModel]="user.username"
+      (ngModelChange)="user.username = $event"
+      name="username"
+      required
+      minlength="2"
+      #usernameInput="ngModel"
+    />
+    {{
+      usernameInput.touched && usernameInput.hasError("required")
+        ? "Ce champ est requis"
+        : ""
+    }}
+  </label>
+  <label>
+    Password
+    <input
+      type="password"
+      [(ngModel)]="user.password"
+      name="password"
+      required
+      #passwordInput="ngModel"
+    />
+    {{
+      passwordInput.touched && passwordInput.hasError("required")
+        ? "Ce champ est requis"
+        : ""
+    }}
+  </label>
+
+  <button type="submit" [disabled]="userForm.invalid">Login</button>
+</form>
