@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map, mergeMap, Observable } from 'rxjs';
 import { ProductData } from 'src/app/models/product-data.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  productData?: ProductData;
+  productData$?: Observable<ProductData | undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,12 +18,10 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.productService
-        .getProductById(params['id'])
-        .subscribe((productData) => {
-          this.productData = productData;
-        });
-    });
+    this.productData$ = this.route.params.pipe(
+      mergeMap((params) => {
+        return this.productService.getProductById(params['id']);
+      })
+    );
   }
 }

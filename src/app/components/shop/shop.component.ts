@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductData } from 'src/app/models/product-data.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,16 +10,17 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ShopComponent implements OnInit {
   searchString = '';
-  productDatas: ProductData[] = [];
+  // productDatas: ProductData[] = [];
+  productDatas$: Observable<ProductData[]> = this.productService.productDatas;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService.productDatas.subscribe({
-      next: (productDatas) => {
-        this.productDatas = productDatas;
-      },
-    });
+    // this.productService.productDatas.subscribe({
+    //   next: (productDatas) => {
+    //     this.productDatas = productDatas;
+    //   },
+    // });
   }
 
   handleAddToCart(productData: ProductData): void {

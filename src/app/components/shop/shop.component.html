@@ -4,7 +4,7 @@
 
 <explore-product
   *ngFor="
-    let product of productDatas | search: searchString;
+    let product of productDatas$ | async | search: searchString;
     let i = index;
     let odd = odd
   "
@@ -20,5 +20,5 @@
 ></explore-product>
 
 <pre>
-  {{ productDatas | json }}
+  {{ productDatas$ | async | json }}
 </pre>

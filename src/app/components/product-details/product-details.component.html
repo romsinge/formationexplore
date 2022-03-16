@@ -1,1 +1,3 @@
-<explore-product [productData]="productData"></explore-product>
+<explore-product
+  [productData]="(productData$ | async) || undefined"
+></explore-product>
